@@ -38,5 +38,18 @@ public class Main {
             }
         }
         System.out.println("[" + maxIndex + "] = " + cities[maxIndex].getPopulation());
+
+        Map<String, Integer> citiesMap = new HashMap<>();
+        for (City city : citiesList) {
+            if (!citiesMap.containsKey(city.getRegion())) {
+                citiesMap.put(city.getRegion(), 1);
+            } else {
+                citiesMap.put(city.getRegion(), citiesMap.get(city.getRegion()) + 1);
+            }
+        }
+
+        for (Map.Entry<String, Integer> map : citiesMap.entrySet()) {
+            System.out.println(map.getKey() + " - " + map.getValue());
+        }
     }
 }
