@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,6 +23,11 @@ public class Main {
 
             citiesList.add(new City(name, region, district, population, foundation));
         }
+
+        citiesList.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
+
+        citiesList.sort(Comparator.comparing(City::getDistrict)
+                .thenComparing(City::getName));
 
         for (City city : citiesList) {
             System.out.println(city);
