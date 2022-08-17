@@ -2,10 +2,10 @@ public class City {
     private String name;
     private String region;
     private String district;
-    private String population;
+    private Long population;
     private String foundation;
 
-    public City(String name, String region, String district, String population, String foundation) {
+    public City(String name, String region, String district, Long population, String foundation) {
         this.name = name;
         this.region = region;
         this.district = district;
@@ -25,7 +25,7 @@ public class City {
         return district;
     }
 
-    public String getPopulation() {
+    public Long getPopulation() {
         return population;
     }
 

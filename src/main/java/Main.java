@@ -1,9 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
@@ -18,7 +15,7 @@ public class Main {
             String name = cities[1].length() > 0 ? cities[1] : null;
             String region = cities[2].length() > 0 ? cities[2] : null;
             String district = cities[3].length() > 0 ? cities[3] : null;
-            String population = cities[4].length() > 0 ? cities[4] : null;
+            Long population = cities[4].length() > 0 ? Long.parseLong(cities[4]) : null;
             String foundation = cities[5].length() > 0 ? cities[5] : null;
 
             citiesList.add(new City(name, region, district, population, foundation));
@@ -32,5 +29,14 @@ public class Main {
         for (City city : citiesList) {
             System.out.println(city);
         }
+
+        City[] cities = Arrays.copyOf(citiesList.toArray(), citiesList.toArray().length, City[].class);
+        int maxIndex = 0;
+        for (int i = 0; i < cities.length; i++) {
+            if (cities[i].getPopulation() > cities[maxIndex].getPopulation()) {
+                maxIndex = i;
+            }
+        }
+        System.out.println("[" + maxIndex + "] = " + cities[maxIndex].getPopulation());
     }
 }
